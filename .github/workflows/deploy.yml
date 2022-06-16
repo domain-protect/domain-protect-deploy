@@ -22,7 +22,7 @@ jobs:
       - name: checkout Domain Protect
         uses: actions/checkout@v3
         with:
-          name: ovotech/domain-protect
+          repository: ovotech/domain-protect
           ref: refs/heads/main
 
       - name: Configure AWS Credentials
