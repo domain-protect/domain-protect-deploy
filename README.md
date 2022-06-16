@@ -1,2 +1,2 @@
 # domain-protect-deploy
-Deployment of Domain Protect using GitHub Actions
+Deploy Domain Protect using GitHub Actions
