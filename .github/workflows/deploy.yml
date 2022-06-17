@@ -1,11 +1,12 @@
 name: Deploy Domain Protect
 on:
+  workflow_dispatch:
   push:
   pull_request:
 
 jobs:
-  terraform_plan_dev:
-    name: Terraform plan dev
+  terraform_plan_apply_dev:
+    name: Terraform plan & apply dev
     runs-on: ubuntu-latest
 
     permissions:
@@ -45,3 +46,6 @@ jobs:
 
       - name: terraform plan dev
         run: terraform plan -out tfplan
+
+      - name: terraform apply dev
+        run: terraform apply -auto-approve tfplan
