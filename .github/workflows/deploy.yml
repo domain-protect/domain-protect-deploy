@@ -4,6 +4,19 @@ on:
   push:
   pull_request:
 
+env:
+  TF_VAR_org_primary_account: ${{ secrets.ORG_PRIMARY_ACCOUNT }}
+  TF_VAR_slack_channels: "['devsecops']"
+  TF_VAR_slack_channels_dev: "['devsecops']"
+  TF_VAR_slack_webhook_urls: ${{ secrets.SLACK_WEBHOOK_URLS }}
+  TF_VAR_external_id: ${{ secrets.EXTERNAL_ID }}
+  TF_VAR_cloudflare: true
+  TF_VAR_cf_api_key: ${{ secrets.CF_API_KEY }}
+  TF_VAR_rcu: 1
+  TF_VAR_wcu: 1
+  TF_VAR_ip_address: true
+  TF_VAR_allowed_regions: "['eu-west-1', 'eu-west-2', 'us-east-1']""
+
 jobs:
   terraform_plan_apply_dev:
     name: Terraform plan & apply dev
