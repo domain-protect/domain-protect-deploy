@@ -50,11 +50,21 @@ jobs:
       - name: terraform apply dev
         run: terraform apply -auto-approve tfplan
 
-  terraform_plan_prd:
-    name: Terraform plan prd
+  approve_prd_plan:
+    name: Approve prd
     environment: 'prd'
     runs-on: ubuntu-latest
-    needs: terraform_plan_apply_dev
+    needs:
+    - terraform_plan_apply_dev
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+  
+  terraform_plan_prd:
+    name: Terraform plan prd
+    runs-on: ubuntu-latest
+    needs: approve_prd_plan
 
     permissions:
       id-token: write
