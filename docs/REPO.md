@@ -10,9 +10,8 @@ git push origin main
 ## Set up GitHub Actions environment
 * a GitHub Actions environment is needed for manual approval steps
 * within the GitHub repository web console, select Settings, Code and automation, Environments
-* create a new environment `main`
+* create a new environment `prd`
 <img src="images/actions-environment.png" width="500">
-* select the newly created environment
 * configure Environment protect rules
 * select Required reviewers
 * enter an appropriate team
