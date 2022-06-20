@@ -49,13 +49,12 @@ jobs:
 
       - name: Install virtualenv
         run: pip install virtualenv
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN}}
           aws-region: ${{ secrets.AWS_REGION }}
-          AWS_DEPLOY_ROLE_ARN: ${{ secrets.AWS_DEPLOY_ROLE_ARN}}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
 
       - name: Terraform initialise
         run: >
@@ -111,8 +110,6 @@ jobs:
         with:
           role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN}}
           aws-region: ${{ secrets.AWS_REGION }}
-          AWS_DEPLOY_ROLE_ARN: ${{ secrets.AWS_DEPLOY_ROLE_ARN}}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
 
       - name: Terraform initialise
         run: >
@@ -170,8 +167,6 @@ jobs:
         with:
           role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN}}
           aws-region: ${{ secrets.AWS_REGION }}
-          AWS_DEPLOY_ROLE_ARN: ${{ secrets.AWS_DEPLOY_ROLE_ARN}}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
 
       - name: Terraform initialise
         run: >
