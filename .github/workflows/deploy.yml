@@ -125,13 +125,13 @@ jobs:
         run: terraform workspace new prd || terraform workspace select prd
 
       - name: terraform plan prd
-        run: terraform plan -out output/prd/tfplan
+        run: terraform plan -out tfplan-prd
 
       - name: Archive prd terraform plan
         uses: actions/upload-artifact@v3
         with:
           name: terraform-plan-prd
-          path: output/prd/tfplan
+          path: tfplan-prd
 
   approve_prd_apply:
     name: Approve prd apply
@@ -143,11 +143,11 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
+
   terraform_apply_prd:
-    name: Terraform plan prd
+    name: Terraform apply prd
     runs-on: ubuntu-latest
     needs: approve_prd_apply
-
     permissions:
       id-token: write
       contents: write
@@ -187,7 +187,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: terraform-plan-prd
-          path: input/prd/tfplan
+          path: tfplan-prd
 
       - name: terraform apply prd
-        run: terraform apply input/prd/tfplan
+        run: terraform apply tfplan-prd
