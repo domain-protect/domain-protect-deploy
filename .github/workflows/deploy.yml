@@ -125,7 +125,7 @@ jobs:
         run: terraform workspace new prd || terraform workspace select prd
 
       - name: terraform plan prd
-        run: terraform plan -out tfplan-prd
+        run: terraform plan -out=tfplan-prd
 
       - name: Archive prd terraform plan
         uses: actions/upload-artifact@v3
@@ -190,4 +190,4 @@ jobs:
           path: tfplan-prd
 
       - name: terraform apply prd
-        run: terraform apply tfplan-prd
+        run: terraform apply -auto-approve tfplan-prd
