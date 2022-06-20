@@ -126,3 +126,21 @@ jobs:
 
       - name: terraform plan prd
         run: terraform plan -out tfplan
+
+      - name: Archive prd terraform plan
+        uses: actions/upload-artifact@v3
+        with:
+          name: terraform plan prd
+          path: output/prd/tfplan
+
+  approve_prd_apply:
+    name: Approve prd apply
+    environment: 'prd'
+    runs-on: ubuntu-latest
+    needs:
+    - terraform_plan_prd
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+  
