@@ -42,16 +42,19 @@ Environment variables should be created as secrets where:
 * the variable would otherwise require double quotes, e.g. a list with string elements
 
 ## Update deploy.yml
-* remove unwanted environment variables, for example if you're not using any optional features, and you want the standard DynamoDB database sizing, delete these lines in the initial the `env` block at the start of [workflow](../.github/workflows/deploy.yml)
+* remove unwanted environment variables, for example if you plan to add optional features later (recommended), delete these lines in the initial the `env` block at the start of [workflow](../.github/workflows/deploy.yml)
 ```
-  TF_VAR_cloudflare: true
-  TF_VAR_cf_api_key: ${{ secrets.CF_API_KEY }}
-  TF_VAR_rcu: 1
-  TF_VAR_wcu: 1
-  TF_VAR_ip_address: true
-  TF_VAR_allowed_regions: ${{ secrets.ALLOWED_REGIONS }}
+TF_VAR_cloudflare: true
+TF_VAR_cf_api_key: ${{ secrets.CF_API_KEY }}
+TF_VAR_ip_address: true
+TF_VAR_allowed_regions: ${{ secrets.ALLOWED_REGIONS }}
 ```
-* enter additional environment variables to turn on optional features
+* similarly if you want to use the standard DynamoDB database sizing (recommended), delete these lines:
+```
+TF_VAR_rcu: 1
+TF_VAR_wcu: 1
+```
+* enter additional environment variables to turn on other optional features
 * enter additional environment variables to customise settings
 * ensure each secret has a corresponding definition in the `env` block at the start of [workflow](../.github/workflows/deploy.yml)
 ```
