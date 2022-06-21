@@ -128,7 +128,16 @@ jobs:
           -backend-config=region=${{ secrets.TERRAFORM_STATE_REGION}}
 
       - name: set Terraform prd workspace
-        run: terraform workspace new prd || terraform workspace select prd
+        run: |
+          terraform workspace list > list.txt
+          if grep "prd" list.txt
+          then
+            terraform workspace select prd
+
+          else
+            echo "creating prd terraform workspace"
+            terraform workspace new prd
+          fi
 
       - name: create artifact folder
         run: mkdir -p output/prd
