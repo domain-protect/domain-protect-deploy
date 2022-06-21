@@ -187,7 +187,7 @@ jobs:
           name: terraform-plan-prd
 
       - name: unzip terraform plan artifact
-        run: unzip /home/runner/work/domain-protect-deploy/domain-protect-deploy/terraform-plan-prd
+        run: unzip terraform-plan-prd
 
       - name: terraform apply prd
-        run: terraform apply -auto-approve /home/runner/work/domain-protect-deploy/domain-protect-deploy/tfplan
+        run: terraform apply -auto-approve tfplan
