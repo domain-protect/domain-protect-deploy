@@ -13,7 +13,7 @@ Deploy [Domain Protect](https://github.com/ovotech/domain-protect) using GitHub 
 * [Create deployment IAM policy](docs/POLICY.md)
 * [Create OpenID Connect IAM role](docs/OIDC.md)
 * [Create and configure deployment repository](docs/REPO.md)
-* [Deploy using GitHub Actions](docs/ACTIONS.md)
+* [Deploy using GitHub Actions](docs/DEPLOY.md)
 
 ## keeping up to date with Domain Protect
 * create a custom watch on Domain Protect repository
