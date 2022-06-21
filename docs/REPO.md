@@ -8,20 +8,20 @@ git push origin main
 ```
 
 ## Set up GitHub Actions environment
-* a GitHub Actions environment is needed for manual approval steps
-* within the GitHub repository web console, select Settings, Code and automation, Environments
-* create a new environment `dev` with no protection rules
-* create a new environment `prd`
+* GitHub Actions environment is needed for manual approval steps
+* within GitHub repository web console, select Settings, Code and automation, Environments
+* create new environment `dev` with no protection rules
+* create new environment `prd`
 * configure Environment protection rules for `prd`
 * select Required reviewers
 * enter an appropriate team
 <img src="images/actions-env-protection.png" width="500">
 * save protection rules
 <img src="images/actions-environment.png" width="500">
-* environments names need to match entries in IAM OIDC role trust policy 
+* environment names must match entries in IAM OIDC role trust policy 
 
 ## Enter secrets
-* at Settings, Security, Secrets, Actions, enter Repository secrets:
+* Settings, Security, Secrets, Actions, enter Repository secrets:
 
 | REPOSITORY SECRETS              | EXAMPLE VALUE / COMMENT                          |
 | ------------------------------- | -------------------------------------------------|
@@ -44,7 +44,7 @@ Environment variables should be created as secrets where:
 * the variable would otherwise require double quotes, e.g. a list with string elements
 
 ## Update deploy.yml
-* remove unwanted environment variables, for example if you plan to add optional features later (recommended), delete these lines in the initial the `env` block at the start of [workflow](../.github/workflows/deploy.yml)
+* remove unwanted environment variables, for example if you plan to add optional features later (recommended), delete these lines in the initial `env` block at the start of [workflow](../.github/workflows/deploy.yml)
 ```
 TF_VAR_cloudflare: true
 TF_VAR_cf_api_key: ${{ secrets.CF_API_KEY }}

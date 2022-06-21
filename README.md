@@ -16,5 +16,5 @@ Deploy [Domain Protect](https://github.com/ovotech/domain-protect) using GitHub 
 * [Deploy using GitHub Actions](docs/OIDC.md)
 
 ## keeping up to date with Domain Protect
-* create a custom watch on the Domain Protect repository
+* create a custom watch on Domain Protect repository
 * when notified of a new release, run your GitHub Actions pipeline
