@@ -4,6 +4,7 @@ Deploy [Domain Protect](https://github.com/ovotech/domain-protect) using GitHub 
 * Deploy Domain Protect in your own environment
 * No need to clone or fork Domain Protect
 * Internal / private deployment repository to protect your sensitive information
+* Uses OpenID Connect - no IAM user with long-lived access keys
 * Easily update to latest version of Domain Protect by running pipeline
 
 <img src="docs/images/pipeline.png">
