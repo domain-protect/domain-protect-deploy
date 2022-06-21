@@ -185,8 +185,17 @@ jobs:
         with:
           name: terraform-plan-prd
 
+      - name: debug 1
+        run: | 
+          pwd
+          ls
+
       - name: unzip terraform plan artifact
         run: unzip terraform-plan-prd
+
+      - name: debug 2
+        run: |
+          ls
 
       - name: terraform apply prd
         run: terraform apply -auto-approve tfplan

@@ -39,3 +39,4 @@
                 }
             }
 ```
+* environment names must match environments set up in Github actions deploy pipeline
