@@ -164,6 +164,17 @@ jobs:
           repository: ovotech/domain-protect
           ref: refs/heads/main
 
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'
+
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
+
+      - name: Install virtualenv
+        run: pip install virtualenv
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
