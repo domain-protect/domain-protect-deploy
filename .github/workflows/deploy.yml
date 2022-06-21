@@ -85,7 +85,7 @@ jobs:
     name: Terraform plan prd
     environment: 'prd'
     runs-on: ubuntu-latest
-    needs: approve_prd_plan
+    needs: terraform_plan_apply_dev
 
     permissions:
       id-token: write
@@ -145,7 +145,7 @@ jobs:
     name: Terraform apply prd
     environment: 'prd'
     runs-on: ubuntu-latest
-    needs: approve_prd_apply
+    needs: terraform_plan_prd
     permissions:
       id-token: write
       contents: write
