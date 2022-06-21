@@ -121,14 +121,17 @@ jobs:
       - name: set Terraform prd workspace
         run: terraform workspace new prd || terraform workspace select prd
 
+      - name: create artifact folder
+        run: mkdir -p output/prd
+
       - name: terraform plan prd
-        run: terraform plan -out=tfplan-prd
+        run: terraform plan -out=output/prd/tfplan
 
       - name: Archive prd terraform plan
         uses: actions/upload-artifact@v3
         with:
           name: terraform-plan-prd
-          path: tfplan-prd
+          path: output/prd/tfplan
 
   approve_prd_apply:
     name: Approve prd apply
@@ -176,13 +179,12 @@ jobs:
           -backend-config=region=${{ secrets.TERRAFORM_STATE_REGION}}
 
       - name: set Terraform prd workspace
-        run: terraform workspace new prd || terraform workspace select prd
+        run: terraform workspace select prd
 
       - name: Download prd terraform plan
         uses: actions/download-artifact@v3
         with:
           name: terraform-plan-prd
-          path: tfplan-prd
 
       - name: terraform apply prd
         run: terraform apply -auto-approve tfplan-prd
