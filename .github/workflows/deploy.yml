@@ -186,5 +186,8 @@ jobs:
         with:
           name: terraform-plan-prd
 
+      - name: unzip terraform plan artifact
+        run: unzip tfplan-plan-prd.zip
+
       - name: terraform apply prd
-        run: terraform apply -auto-approve tfplan-prd
+        run: terraform apply -auto-approve tfplan
