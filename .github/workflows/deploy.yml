@@ -64,7 +64,16 @@ jobs:
           -backend-config=region=${{ secrets.TERRAFORM_STATE_REGION}}
 
       - name: set Terraform dev workspace
-        run: terraform workspace new dev || terraform workspace select dev
+        run: |
+          terraform workspace list > list.txt
+          if grep "dev" list.txt
+          then
+            terraform workspace select dev
+
+          else
+            echo "creating dev terraform workspace"
+            terraform workspace new dev
+          fi
 
       - name: terraform plan dev
         run: terraform plan -out tfplan
