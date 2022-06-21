@@ -33,7 +33,8 @@
                 "StringEquals": {
                     "token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
                     "token.actions.githubusercontent.com:sub": [
-                        "repo:YOUR_GITHUB_ORG/domain-protect-deploy:ref:refs/heads/main"
+                        "repo:YOUR_GITHUB_ORG/domain-protect-deploy:environment:dev",
+                        "repo:YOUR_GITHUB_ORG/domain-protect-deploy:environment:prd"
                     ]
                 }
             }

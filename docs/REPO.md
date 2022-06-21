@@ -10,13 +10,15 @@ git push origin main
 ## Set up GitHub Actions environment
 * a GitHub Actions environment is needed for manual approval steps
 * within the GitHub repository web console, select Settings, Code and automation, Environments
+* create a new environment `dev` with no protection rules
 * create a new environment `prd`
-<img src="images/actions-environment.png" width="500">
-* configure Environment protect rules
+* configure Environment protection rules for `prd`
 * select Required reviewers
 * enter an appropriate team
 <img src="images/actions-env-protection.png" width="500">
 * save protection rules
+<img src="images/actions-environment.png" width="500">
+* environments names need to match entries in IAM OIDC role trust policy 
 
 ## Enter secrets
 * at Settings, Security, Secrets, Actions, enter Repository secrets:

@@ -20,6 +20,7 @@ env:
 jobs:
   terraform_plan_apply_dev:
     name: Terraform plan & apply dev
+    environment: 'dev'
     runs-on: ubuntu-latest
 
     permissions:
