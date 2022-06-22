@@ -1,7 +1,7 @@
 # domain-protect-deploy
 Deploy [Domain Protect](https://github.com/ovotech/domain-protect) using GitHub Actions
 
-* Deploy Domain Protect in your own AWS environment
+* Deploy Domain Protect in your AWS environment
 * No need to clone or fork Domain Protect
 * Internal / private deployment repository to protect your sensitive information
 * Uses OpenID Connect - no IAM user with long-lived access keys
