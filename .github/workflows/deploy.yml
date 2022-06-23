@@ -2,7 +2,6 @@ name: Deploy Domain Protect
 on:
   workflow_dispatch:
   push:
-  pull_request:
 
 env:
   TF_VAR_org_primary_account: ${{ secrets.ORG_PRIMARY_ACCOUNT }}
