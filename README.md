@@ -9,6 +9,15 @@ Deploy [Domain Protect](https://github.com/ovotech/domain-protect) using GitHub 
 
 <img src="docs/images/pipeline.png">
 
+## pipeline steps
+Pipeline triggered manually and also on `git push` of the main branch
+
+* Terraform plan and apply of Domain Protect dev in security tooling account 
+* Terraform plan for Domain protect prd in security tooling account (approval required)
+* Terraform apply for Domain protect prd in security tooling account (approval required)
+
+Both dev and prd are deployed to the production security tooling account, as this will have rights to assume the audit role in all AWS accounts in the Organization.
+
 ## before starting
 * check prerequisites detailed in main [Domain Protect](https://github.com/ovotech/domain-protect) documentation
 
