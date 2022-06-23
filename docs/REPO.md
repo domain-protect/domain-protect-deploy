@@ -1,10 +1,10 @@
 ## Create repo in your own GitHub Organisation
-* create a private or internal repository `domain-protect-deploy` in your organisation
+* create an empty private or internal repository `domain-protect-deploy` in your organisation
 ```
-git clone https://github.com/domain-protect/domain-protect-deploy
-git remote rename origin upstream
-git remote add origin https://YOUR_GITHUB_ORG/domain-protect-deploy
-git push origin main
+git clone git@github.com:domain-protect/domain-protect-deploy.git
+git remote add origin git@github.com:YOUR_GITHUB_ORG/domain-protect-deploy.git
+git branch -M main
+git push -u origin main
 ```
 
 ## Set up GitHub Actions environment
