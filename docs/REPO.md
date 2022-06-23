@@ -2,6 +2,7 @@
 * create an empty private or internal repository `domain-protect-deploy` in your organisation
 ```
 git clone git@github.com:domain-protect/domain-protect-deploy.git
+cd domain-protect-deploy
 git remote add origin git@github.com:YOUR_GITHUB_ORG/domain-protect-deploy.git
 git branch -M main
 git push -u origin main
