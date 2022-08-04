@@ -16,7 +16,7 @@ env:
   TF_VAR_rcu: 1
   TF_VAR_wcu: 1
   TF_VAR_ip_address: true
-  TF_VAR_ip_time_limit: "6"
+  TF_VAR_ip_time_limit: "3"
   TF_VAR_allowed_regions: ${{ secrets.ALLOWED_REGIONS }}
 
 jobs:
