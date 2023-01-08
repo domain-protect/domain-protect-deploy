@@ -48,8 +48,8 @@ Environment variables should be created as secrets where:
 ```
 TF_VAR_cloudflare: true
 TF_VAR_cf_api_key: ${{ secrets.CF_API_KEY }}
-TF_VAR_ip_address: true
-TF_VAR_allowed_regions: ${{ secrets.ALLOWED_REGIONS }}
+TF_VAR_hackerone: "enabled"
+TF_VAR_hackerone_api_token: ${{ secrets.HACKERONE_API_TOKEN }}
 ```
 * similarly if you want to use the standard DynamoDB database sizing (recommended), delete these lines:
 ```
