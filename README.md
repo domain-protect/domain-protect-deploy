@@ -1,5 +1,5 @@
 # domain-protect-deploy
-Deploy [Domain Protect](https://github.com/ovotech/domain-protect) using GitHub Actions
+Deploy [Domain Protect](https://github.com/domain-protect/domain-protect) using GitHub Actions
 
 * Deploy Domain Protect in your AWS environment
 * No need to clone or fork Domain Protect
@@ -19,7 +19,7 @@ Pipeline triggered manually and also on `git push` of the main branch
 Both dev and prd are deployed to the production security tooling account, as this will have rights to assume the audit role in all AWS accounts in the Organization.
 
 ## before starting
-* check [requirements](https://github.com/ovotech/domain-protect/blob/main/docs/requirements.md)
+* check [requirements](https://github.com/domain-protect/domain-protect/blob/main/docs/requirements.md)
 
 ## how to set up
 * [Create deployment IAM policy](docs/POLICY.md)
