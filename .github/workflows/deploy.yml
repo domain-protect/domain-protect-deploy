@@ -16,7 +16,7 @@ env:
   TF_VAR_rcu: 1
   TF_VAR_wcu: 1
   TF_VAR_ip_address: true
-  TF_VAR_ip_time_limit: "3"
+  TF_VAR_ip_time_limit: "0.1"
   TF_VAR_allowed_regions: "['eu-west-1', 'eu-west-2', 'us-east-1']"
   TF_VAR_scan_schedule: "5 minutes"
   TF_VAR_update_schedule: "5 minutes"
