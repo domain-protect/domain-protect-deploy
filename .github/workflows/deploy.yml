@@ -10,6 +10,8 @@ env:
   TF_VAR_slack_channels: ${{ secrets.SLACK_CHANNELS }}
   TF_VAR_slack_channels_dev: ${{ secrets.SLACK_CHANNELS_DEV }}
   TF_VAR_slack_webhook_urls: ${{ secrets.SLACK_WEBHOOK_URLS }}
+  TF_VAR_slack_webhook_urls_dev: ${{ secrets.SLACK_WEBHOOK_URLS_DEV }}
+  TF_VAR_slack_webhook_type: "app"
   TF_VAR_external_id: ${{ secrets.EXTERNAL_ID }}
   TF_VAR_cloudflare: true
   TF_VAR_cf_api_key: ${{ secrets.CF_API_KEY }}
