@@ -20,9 +20,9 @@ env:
   TF_VAR_ip_address: true
   TF_VAR_ip_time_limit: "0.1"
   TF_VAR_allowed_regions: "['eu-west-1', 'eu-west-2', 'us-east-1']"
-  TF_VAR_scan_schedule: "5 minutes"
-  TF_VAR_update_schedule: "5 minutes"
-  TF_VAR_ip_scan_schedule: "5 minutes"
+  TF_VAR_scan_schedule: "10 minutes"
+  TF_VAR_update_schedule: "10 minutes"
+  TF_VAR_ip_scan_schedule: "10 minutes"
   TF_VAR_hackerone: "enabled"
   TF_VAR_hackerone_api_token: ${{ secrets.HACKERONE_API_TOKEN }}
 
