@@ -201,7 +201,7 @@ jobs:
         run: terraform workspace select prd
 
       - name: Download prd terraform plan
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: terraform-plan-prd
 
