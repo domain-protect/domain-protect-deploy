@@ -48,7 +48,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: domain-protect/domain-protect
-          ref: refs/heads/main
+          ref: refs/tags/v0.4.8
 
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
