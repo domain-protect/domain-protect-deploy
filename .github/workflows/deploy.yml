@@ -113,7 +113,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: domain-protect/domain-protect
-          ref: refs/heads/main
+          ref: refs/tags/0.4.8
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
