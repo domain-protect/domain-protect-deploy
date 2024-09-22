@@ -74,11 +74,11 @@ jobs:
 
       - name: set Terraform dev workspace
         run: |
+          terraform init
           terraform workspace list > list.txt
           if grep "dev" list.txt
           then
             terraform workspace select dev
-
           else
             echo "creating dev terraform workspace"
             terraform workspace new dev
@@ -121,11 +121,11 @@ jobs:
 
       - name: set Terraform prd workspace
         run: |
+          terraform init
           terraform workspace list > list.txt
           if grep "prd" list.txt
           then
             terraform workspace select prd
-
           else
             echo "creating prd terraform workspace"
             terraform workspace new prd
@@ -183,7 +183,9 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: set Terraform prd workspace
-        run: terraform workspace select prd
+        run: 
+          terraform init
+          terraform workspace select prd
 
       - name: Download prd terraform plan
         uses: actions/download-artifact@v4
