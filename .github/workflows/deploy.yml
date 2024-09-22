@@ -183,7 +183,7 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: set Terraform prd workspace
-        run: 
+        run: >
           terraform init
           terraform workspace select prd
 
