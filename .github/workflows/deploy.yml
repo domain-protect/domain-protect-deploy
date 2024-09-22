@@ -6,6 +6,10 @@ on:
       - main
 
 env:
+  DOMAIN_PROTECT_VERSION: "0.4.8"
+  TERRAFORM_VERSION: "1.4.6"
+  PYTHON_VERSION: "3.11"
+  TF_VAR_runtime: "python3.11"
   TF_VAR_org_primary_account: ${{ secrets.ORG_PRIMARY_ACCOUNT }}
   TF_VAR_slack_channels: ${{ secrets.SLACK_CHANNELS }}
   TF_VAR_slack_channels_dev: ${{ secrets.SLACK_CHANNELS_DEV }}
@@ -26,6 +30,7 @@ env:
   TF_VAR_hackerone: "enabled"
   TF_VAR_hackerone_api_token: ${{ secrets.HACKERONE_API_TOKEN }}
   TF_VAR_region: ${{ secrets.AWS_REGION }}
+  TF_CLI_ARGS_init: "-backend-config=bucket=${{ secrets.TERRAFORM_STATE_BUCKET }} -backend-config=key=${{ secrets.TERRAFORM_STATE_KEY }} -backend-config=region=${{ secrets.TERRAFORM_STATE_REGION }}"
 
 jobs:
   terraform_plan_apply_dev:
@@ -42,18 +47,18 @@ jobs:
       - name: Terraform setup
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: 1.4.6
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
 
       - name: checkout Domain Protect
         uses: actions/checkout@v4
         with:
           repository: domain-protect/domain-protect
-          ref: refs/tags/0.4.8
+          ref: refs/tags/${{ env.DOMAIN_PROTECT_VERSION }}
 
-      - name: Set up Python 3.11
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
@@ -67,20 +72,13 @@ jobs:
           role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN}}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Terraform initialise
-        run: >
-          terraform init 
-          -backend-config=bucket=${{ secrets.TERRAFORM_STATE_BUCKET}} 
-          -backend-config=key=${{ secrets.TERRAFORM_STATE_KEY}} 
-          -backend-config=region=${{ secrets.TERRAFORM_STATE_REGION}}
-
       - name: set Terraform dev workspace
         run: |
+          terraform init
           terraform workspace list > list.txt
           if grep "dev" list.txt
           then
             terraform workspace select dev
-
           else
             echo "creating dev terraform workspace"
             terraform workspace new dev
@@ -107,34 +105,27 @@ jobs:
       - name: Terraform setup
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: 1.4.6
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
 
       - name: checkout Domain Protect
         uses: actions/checkout@v4
         with:
           repository: domain-protect/domain-protect
-          ref: refs/tags/0.4.8
+          ref: refs/tags/${{ env.DOMAIN_PROTECT_VERSION }}
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN}}
           aws-region: ${{ secrets.AWS_REGION }}
-
-      - name: Terraform initialise
-        run: >
-          terraform init 
-          -backend-config=bucket=${{ secrets.TERRAFORM_STATE_BUCKET}} 
-          -backend-config=key=${{ secrets.TERRAFORM_STATE_KEY}} 
-          -backend-config=region=${{ secrets.TERRAFORM_STATE_REGION}}
-
+   
       - name: set Terraform prd workspace
         run: |
+          terraform init
           terraform workspace list > list.txt
           if grep "prd" list.txt
           then
             terraform workspace select prd
-
           else
             echo "creating prd terraform workspace"
             terraform workspace new prd
@@ -166,18 +157,18 @@ jobs:
       - name: Terraform setup
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: 1.4.6
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
 
       - name: checkout Domain Protect
         uses: actions/checkout@v4
         with:
           repository: domain-protect/domain-protect
-          ref: refs/heads/main
+          ref: refs/tags/${{ env.DOMAIN_PROTECT_VERSION }}
 
-      - name: Set up Python 3.11
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
@@ -191,15 +182,10 @@ jobs:
           role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN}}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Terraform initialise
-        run: >
-          terraform init 
-          -backend-config=bucket=${{ secrets.TERRAFORM_STATE_BUCKET}} 
-          -backend-config=key=${{ secrets.TERRAFORM_STATE_KEY}} 
-          -backend-config=region=${{ secrets.TERRAFORM_STATE_REGION}}
-
       - name: set Terraform prd workspace
-        run: terraform workspace select prd
+        run: 
+          terraform init
+          terraform workspace select prd
 
       - name: Download prd terraform plan
         uses: actions/download-artifact@v4
