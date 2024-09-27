@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  DOMAIN_PROTECT_VERSION: "0.4.8"
+  DOMAIN_PROTECT_VERSION: "0.5.1"
   TERRAFORM_VERSION: "1.4.6"
   PYTHON_VERSION: "3.11"
   TF_VAR_runtime: "python3.11"
